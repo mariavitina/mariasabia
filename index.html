@@ -5,42 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Maria Sabia</title>
   <style>
+    * { 
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: Arial, sans-serif;
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 20px 40px;
       line-height: 1.6;
       color: #333;
       background-color: #f9f9f9;
     }
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
       background: linear-gradient(90deg, #6a0dad, #008000); /* viola a verde */
       color: white;
-      padding: 20px 0;
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2rem;
-      font-weight: bold;
-      letter-spacing: 2px;
+      display: flex;
+      aling-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      height:60px;
+      z-index:1000;
     }
-    a {
-      color: #0a9396;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    section {
-      margin-bottom: 30px;
-    }
-  </style>
+    .menu-hamburger {
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .menu-hamburger span {
+    display: block;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+  }
+
+  /* Titolo */
+  .header-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 15px;
+    flex-grow: 1;
+  }
+
+  /* Barra di ricerca a destra */
+  .search-container {
+    position: relative;
+  }
+
+  .search-container input[type="search"] {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+  }
+
+  /* Spazio sotto header per evitare che contenuto sia coperto */
+  main {
+    margin-top: 70px;
+  }
+
+  a {
+    color: #0a9396;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  section {
+    margin-bottom: 30px;
+  }
+</style>
 </head>
 <body>
-  <header>
-    Maria Sabia
-  </header>
 
+<header>
+  <div class="menu-hamburger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="header-title">Maria Sabia</div>
+
+  <div class="search-container">
+    <input type="search" placeholder="Cerca..." aria-label="Cerca nel sito" />
+  </div>
+</header>
+
+<main>
   <section>
     <h2>Chi sono</h2>
     <p>Sono una sviluppatrice web appassionata di design e usabilità. Qui puoi trovare alcuni dei miei progetti e contatti.</p>
@@ -59,6 +122,8 @@
     <h2>Contatti</h2>
     <p>Email: <a href="mailto:maria.sabia@example.com">maria.sabia@example.com</a></p>
   </section>
+</main>
+
 </body>
 </html>
-
+    
