@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Maria Sabia</title>
+<title>Portfolio di Maria Sabia</title>
 
 <!-- Google Fonts Poppins -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -12,18 +12,13 @@
   * {
     box-sizing: border-box;
   }
-
   body {
     font-family: 'Poppins', sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px 40px;
-    line-height: 1.6;
-    color: #333;
+    margin: 0;
     background-color: #f9f9f9;
+    color: #333;
   }
 
-  /* Header full width and fixed */
   header {
     position: fixed;
     top: 0;
@@ -39,17 +34,32 @@
     z-index: 1000;
   }
 
-  /* Menu hamburger container */
+  /* Menu desktop */
+  nav.desktop-menu {
+    display: flex;
+    gap: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  nav.desktop-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  nav.desktop-menu a.active {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* Hamburger menu */
   .menu-hamburger {
     width: 30px;
     height: 24px;
     cursor: pointer;
-    display: flex;
+    display: none; /* nascosto su desktop */
     flex-direction: column;
     justify-content: space-between;
   }
-
-  /* Hamburger lines */
   .menu-hamburger span {
     display: block;
     height: 3px;
@@ -57,88 +67,109 @@
     border-radius: 2px;
     transition: all 0.3s ease;
   }
-
-  /* Hamburger animation when active */
   .menu-hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
-
   .menu-hamburger.active span:nth-child(2) {
     opacity: 0;
   }
-
   .menu-hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
   }
 
-  /* Title styling */
-  .header-title {
-    font-weight: 600;
-    font-size: 1.6rem;
-    margin-left: 15px;
-    flex-grow: 1;
+  /* Mobile menu */
+  nav.mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: linear-gradient(90deg, #6a0dad, #008000);
+    display: none;
+    flex-direction: column;
+    padding: 10px 20px;
   }
-
-  /* Search container */
-  .search-container {
-    position: relative;
-  }
-
-  /* Search icon button */
-  .search-icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    fill: white;
-    transition: transform 0.3s ease;
-  }
-
-  /* Search input hidden by default */
-  .search-input {
-    position: absolute;
-    top: 50%;
-    right: 30px;
-    transform: translateY(-50%);
-    width: 0;
-    opacity: 0;
-    padding: 5px 10px;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    transition: width 0.3s ease, opacity 0.3s ease;
-    background-color: white;
-    color: #333;
-  }
-
-  /* Search input visible */
-  .search-container.active .search-input {
-    width: 180px;
-    opacity: 1;
-  }
- 
- .header-icon {
-  display: flex;
-  align-items: center;
-}
-
-
-  /* Add some spacing on body top so content not covered */
-  main {
-    margin-top: 70px;
-  }
-
-  a {
-    color: #0a9396;
+  nav.mobile-menu a {
+    color: white;
+    padding: 10px 0;
     text-decoration: none;
+    font-weight: 400;
   }
-
-  a:hover {
+  nav.mobile-menu a.active {
+    font-weight: 700;
     text-decoration: underline;
   }
 
-  section {
+  /* Titolo centrale */
+  main {
+    padding: 100px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  main h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  main p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+
+  /* Bottone CV viola */
+  .btn-cv {
+    background-color: #6a0dad;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     margin-bottom: 30px;
+  }
+  .btn-cv:hover {
+    background-color: #5a0ca0;
+  }
+
+  /* Icone social e contatti */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .social-icons a {
+    color: #6a0dad;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+
+  /* Sezione contatti */
+  .contacts {
+    font-size: 1rem;
+  }
+  .contacts a {
+    color: #0a9396;
+    text-decoration: none;
+  }
+  .contacts a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav.desktop-menu {
+      display: none;
+    }
+    .menu-hamburger {
+      display: flex;
+    }
+    nav.mobile-menu.show {
+      display: flex;
+    }
   }
 </style>
 
@@ -152,106 +183,110 @@
     <span></span>
   </div>
 
-  <div class="header-icon" aria-hidden="true" style="margin: 0 10px;">
-    <img src="images/MS.png" alt="Icona MS" width="24" height="24" />
-  </div>
-
-  <div class="header-title">Maria Sabia</div>
- 
-  <nav class="header-nav" aria-label="Menu principale" style="margin-right: 15px;">
-    <a href="#home" style="color: white; margin-right: 15px; font-weight: 600; text-decoration: none;">Home</a>
-    <a href="files/Maria_Sabia_CV.pdf" download style="color: white; font-weight: 600; text-decoration: none;">CV</a>
+  <nav class="desktop-menu" id="desktopMenu">
+    <a href="#home" class="active" id="linkHome">Home</a>
+    <a href="#cv" id="linkCV">CV</a>
   </nav>
 
-  <div class="search-container" id="searchContainer">
-    <!-- Icon lente di ingrandimento SVG -->
-    <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" aria-label="Cerca" role="button" tabindex="0" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.15 5.02 12.13 2 8.5 2S1.85 5.02 1.85 8.39c0 3.36 3.02 6.38 6.65 6.38 1.61 0 3.09-.59 4.21-1.58l.27.28v.79l4.25 4.25 1.5-1.5-4.25-4.25zM8.5 13c-2.5 0-4.5-2-4.5-4.5S6 4 8.5 4s4.5 2 4.5 4.5S11 13 8.5 13z"/>
-    </svg>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="active" id="mobileLinkHome">Home</a>
+    <a href="#cv" id="mobileLinkCV">CV</a>
+  </nav>
 
-    <input type="search" id="searchInput" class="search-input" placeholder="Cerca nel sito" aria-label="Cerca nel sito" />
-  </div>
 </header>
 
 <main>
-  <section id="home" style="margin-bottom: 40px;">
-    <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">Benvenuto!</h1>
-    <p style="font-size: 1.1rem; max-width: 700px; margin-bottom: 20px;">
-      Sono Maria Sabia, questa è la mia homepage. Sono una neolaureata magistrale in informatica curricula Cybersecurity presso l'Università degli studi di Perugia. Sono una sviluppatrice interessata agli ambiti della sicurezza informatica, programmazione e design delle interfacce.
-    </p>
-    <a href="files/Maria_Sabia_CV.pdf" download
-       style="display: inline-block; background-color: #6a0dad; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; margin-bottom: 20px;">
-      Scarica CV
-    </a>
-    <hr style="border: none; border-top: 1px solid #ccc; margin-bottom: 20px; max-width: 700px;" />
-    <div class="social-icons" style="display: flex; gap: 20px; margin-bottom: 30px;">
-      <a href="https://github.com/tuousername" target="_blank" aria-label="GitHub">
-        <img src="images/github-icon.svg" alt="GitHub" width="32" height="32" />
-      </a>
-      <a href="https://linkedin.com/in/tuoprofilo" target="_blank" aria-label="LinkedIn">
-        <img src="images/linkedin-icon.svg" alt="LinkedIn" width="32" height="32" />
-      </a>
+  <section id="home">
+    <h1>Benvenuto!</h1>
+    <p>Sono Maria Sabia, questa è la mia homepage. Sono una neolaureata magistrale in informatica curricula Cybersecurity presso l'Università degli studi di Perugia. Sono una sviluppatrice interessata agli ambiti della sicurezza informatica, programmazione e design delle interfacce.</p>
+    <a href="files/CV_Maria_Sabia.pdf" download class="btn-cv">Scarica CV</a>
+
+    <div class="social-icons">
+      <a href="https://github.com/mariasabia" target="_blank" aria-label="GitHub">&#x1F5C3;</a>
+      <a href="https://linkedin.com/in/mariasabia" target="_blank" aria-label="LinkedIn">&#128100;</a>
+    </div>
+
+    <div class="contacts">
+      <p>Email: <a href="mailto:mariavitinasabia98@gmail.com">mariavitinasabia98@gmail.com</a></p>
     </div>
   </section>
 
-  <section id="contatti">
-    <h2>Contatti</h2>
-    <p>Email: <a href="mailto:maria.sabia@example.com">maria.sabia@example.com</a></p>
+  <section id="cv" style="display:none;">
+    <h2>Il mio CV</h2>
+    <p>Qui potresti inserire un'anteprima o link aggiuntivi al tuo CV.</p>
   </section>
-
-  <!-- Le altre sezioni come Progetti, ecc. possono andare qui -->
 </main>
 
-
-
-
 <script>
-  // Menu hamburger toggle
+  // Toggle hamburger menu
   const menuHamburger = document.getElementById('menuHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
   menuHamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('show');
     menuHamburger.classList.toggle('active');
   });
-  menuHamburger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      menuHamburger.classList.toggle('active');
-    }
-  });
 
-  // Search toggle
-  const searchContainer = document.getElementById('searchContainer');
-  const searchIcon = document.getElementById('searchIcon');
-  const searchInput = document.getElementById('searchInput');
+  // Link desktop e mobile
+  const linkHome = document.getElementById('linkHome');
+  const linkCV = document.getElementById('linkCV');
+  const mobileLinkHome = document.getElementById('mobileLinkHome');
+  const mobileLinkCV = document.getElementById('mobileLinkCV');
 
-  searchIcon.addEventListener('click', () => {
-    searchContainer.classList.toggle('active');
-    if (searchContainer.classList.contains('active')) {
-      searchInput.focus();
-    } else {
-      searchInput.value = '';
-    }
-  });
+  const sectionHome = document.getElementById('home');
+  const sectionCV = document.getElementById('cv');
 
-  searchIcon.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      searchContainer.classList.toggle('active');
-      if (searchContainer.classList.contains('active')) {
-        searchInput.focus();
-      } else {
-        searchInput.value = '';
-      }
-    }
-  });
+  function setActiveSection(section) {
+    if (section === 'home') {
+      sectionHome.style.display = 'block';
+      sectionCV.style.display = 'none';
 
-  // Optional: close search if clicked outside input
-  document.addEventListener('click', (e) => {
-    if (!searchContainer.contains(e.target) && searchContainer.classList.contains('active')) {
-      searchContainer.classList.remove('active');
-      searchInput.value = '';
+      linkHome.classList.add('active');
+      linkCV.classList.remove('active');
+      mobileLinkHome.classList.add('active');
+      mobileLinkCV.classList.remove('active');
+    } else if (section === 'cv') {
+      sectionHome.style.display = 'none';
+      sectionCV.style.display = 'block';
+
+      linkHome.classList.remove('active');
+      linkCV.classList.add('active');
+      mobileLinkHome.classList.remove('active');
+      mobileLinkCV.classList.add('active');
     }
+
+    // Chiudi menu mobile se aperto
+    if(mobileMenu.classList.contains('show')){
+      mobileMenu.classList.remove('show');
+      menuHamburger.classList.remove('active');
+    }
+  }
+
+  // Eventi click link
+  linkHome.addEventListener('click', e => {
+    e.preventDefault();
+    setActiveSection('home');
   });
+  linkCV.addEventListener('click', e => {
+    e.preventDefault();
+    setActiveSection('cv');
+  });
+  mobileLinkHome.addEventListener('click', e => {
+    e.preventDefault();
+    setActiveSection('home');
+  });
+  mobileLinkCV.addEventListener('click', e => {
+e.preventDefault();
+setActiveSection('cv');
+});
+
+// Per chi arriva su pagina con hash (es. #cv)
+window.addEventListener('load', () => {
+const hash = window.location.hash.substring(1);
+if(hash === 'cv'){
+setActiveSection('cv');
+} else {
+setActiveSection('home');
+}
+});
 </script>
-
-</body>
-</html>
+</body> </html> 
