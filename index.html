@@ -1,74 +1,123 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maria Sabia</title>
-  <style>
-    * { 
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px 40px;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      background: linear-gradient(90deg, #6a0dad, #008000); /* viola a verde */
-      color: white;
-      display: flex;
-      aling-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      height:60px;
-      z-index:1000;
-    }
-    .menu-hamburger {
-    cursor: pointer;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio di Maria Sabia</title>
+
+<!-- Google Fonts Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+
+  /* Header full width and fixed */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: linear-gradient(90deg, #6a0dad, #008000);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 60px;
+    z-index: 1000;
+  }
+
+  /* Menu hamburger container */
+  .menu-hamburger {
     width: 30px;
-    height: 22px;
+    height: 24px;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
+
+  /* Hamburger lines */
   .menu-hamburger span {
     display: block;
-    height: 4px;
+    height: 3px;
     background: white;
     border-radius: 2px;
+    transition: all 0.3s ease;
   }
 
-  /* Titolo */
+  /* Hamburger animation when active */
+  .menu-hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Title styling */
   .header-title {
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-weight: 600;
+    font-size: 1.6rem;
     margin-left: 15px;
     flex-grow: 1;
   }
 
-  /* Barra di ricerca a destra */
+  /* Search container */
   .search-container {
     position: relative;
   }
 
-  .search-container input[type="search"] {
+  /* Search icon button */
+  .search-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    fill: white;
+    transition: transform 0.3s ease;
+  }
+
+  /* Search input hidden by default */
+  .search-input {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    width: 0;
+    opacity: 0;
     padding: 5px 10px;
     border-radius: 20px;
     border: none;
     outline: none;
     font-size: 1rem;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    background-color: white;
+    color: #333;
   }
 
-  /* Spazio sotto header per evitare che contenuto sia coperto */
+  /* Search input visible */
+  .search-container.active .search-input {
+    width: 180px;
+    opacity: 1;
+  }
+
+  /* Add some spacing on body top so content not covered */
   main {
     margin-top: 70px;
   }
@@ -86,11 +135,12 @@
     margin-bottom: 30px;
   }
 </style>
+
 </head>
 <body>
 
 <header>
-  <div class="menu-hamburger" aria-label="Menu">
+  <div class="menu-hamburger" id="menuHamburger" aria-label="Menu" tabindex="0">
     <span></span>
     <span></span>
     <span></span>
@@ -98,8 +148,13 @@
 
   <div class="header-title">Maria Sabia</div>
 
-  <div class="search-container">
-    <input type="search" placeholder="Cerca..." aria-label="Cerca nel sito" />
+  <div class="search-container" id="searchContainer">
+    <!-- Icon lente di ingrandimento SVG -->
+    <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" aria-label="Cerca" role="button" tabindex="0" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.15 5.02 12.13 2 8.5 2S1.85 5.02 1.85 8.39c0 3.36 3.02 6.38 6.65 6.38 1.61 0 3.09-.59 4.21-1.58l.27.28v.79l4.25 4.25 1.5-1.5-4.25-4.25zM8.5 13c-2.5 0-4.5-2-4.5-4.5S6 4 8.5 4s4.5 2 4.5 4.5S11 13 8.5 13z"/>
+    </svg>
+
+    <input type="search" id="searchInput" class="search-input" placeholder="Cerca nel sito" aria-label="Cerca nel sito" />
   </div>
 </header>
 
@@ -124,6 +179,53 @@
   </section>
 </main>
 
+<script>
+  // Menu hamburger toggle
+  const menuHamburger = document.getElementById('menuHamburger');
+  menuHamburger.addEventListener('click', () => {
+    menuHamburger.classList.toggle('active');
+  });
+  menuHamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      menuHamburger.classList.toggle('active');
+    }
+  });
+
+  // Search toggle
+  const searchContainer = document.getElementById('searchContainer');
+  const searchIcon = document.getElementById('searchIcon');
+  const searchInput = document.getElementById('searchInput');
+
+  searchIcon.addEventListener('click', () => {
+    searchContainer.classList.toggle('active');
+    if (searchContainer.classList.contains('active')) {
+      searchInput.focus();
+    } else {
+      searchInput.value = '';
+    }
+  });
+
+  searchIcon.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      searchContainer.classList.toggle('active');
+      if (searchContainer.classList.contains('active')) {
+        searchInput.focus();
+      } else {
+        searchInput.value = '';
+      }
+    }
+  });
+
+  // Optional: close search if clicked outside input
+  document.addEventListener('click', (e) => {
+    if (!searchContainer.contains(e.target) && searchContainer.classList.contains('active')) {
+      searchContainer.classList.remove('active');
+      searchInput.value = '';
+    }
+  });
+</script>
+
 </body>
 </html>
-    
