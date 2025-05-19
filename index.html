@@ -18,20 +18,78 @@
       color: #333;
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      background: linear-gradient(90deg, #6a0dad, #008000);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      height: 60px;
-      z-index: 1000;
-    }
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: linear-gradient(90deg, #6a0dad, #008000);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 60px;
+    z-index: 1000;
+}
+
+/* Aggiungi questa regola per togliere il gap tra header e immagine */
+#home {
+  padding-top: 60px; /* spinge il contenuto sotto l’header fisso */
+}
+
+    /* Header già fisso, va bene così */
+
+/* Assicura che il contenuto sotto header non venga coperto */
+#home {
+  padding-top: 60px; /* altezza header */
+}
+
+/* Immagine rettangolare 100% larghezza e altezza fissa */
+.hero-image {
+  width: 100%;
+  height: 500px;       /* regola se vuoi */
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Centrare testo e bottone sotto immagine */
+.home-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 30px auto 60px;
+  padding: 0 20px;
+}
+
+.home-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.home-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.btn-cv {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #6a0dad;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cv:hover {
+  background-color: #5a0ca0;
+}
+
 
     /* Hamburger a sinistra */
     .menu-hamburger {
@@ -153,46 +211,7 @@
   background-color: #f0f0f0;
 }
     
-.hero-image {
-  width: 100%;
-  height: 500px; /* puoi regolare l'altezza */
-  object-fit: cover;
-  display: block;
-  margin: 0;
-  padding: 0;
-}
 
-.home-text {
-  text-align: center;
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.home-text h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.home-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.btn-cv {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background-color: #0077cc;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-.btn-cv:hover {
-  background-color: #005fa3;
-}
 
 
     nav.mobile-menu {
@@ -379,16 +398,16 @@
 
 
 <main>
+<header> ... </header>
 <section id="home">
-  <img src="images/img_1.jpg" alt="Foto" class="hero-image">
+  <img src="images/img_1.jpg" alt="Foto Maria" class="hero-image" />
   <div class="home-text">
     <h1>Benvenuto!</h1>
-    <p>
-      Sono Maria Sabia, questa è la mia homepage. Sono una neolaureata magistrale in informatica curricula Cybersecurity presso l'Università degli studi di Perugia. Sono una sviluppatrice interessata agli ambiti della sicurezza informatica, programmazione e design delle interfacce.
-    </p>
+    <p> ... testo ... </p>
     <a href="files/CV_Maria_Vitina_Sabia.pdf" download class="btn-cv">Scarica CV</a>
   </div>
 </section>
+
     
     <div class="social-icons" aria-label="Link social">
       <a href="https://github.com/mariavitina" target="_blank" aria-label="GitHub" rel="noopener noreferrer">
