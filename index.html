@@ -1,273 +1,268 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Maria Sabia</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maria Sabia</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-<style>
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    background: linear-gradient(90deg, #6a0dad, #008000);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    height: 60px;
-    z-index: 1000;
-  }
-
-  /* Hamburger a sinistra */
-  .menu-hamburger {
-    width: 30px;
-    height: 24px;
-    cursor: pointer;
-    display: none; /* solo mobile */
-    flex-direction: column;
-    justify-content: space-between;
-    margin-right: 15px;
-  }
-  .menu-hamburger span {
-    display: block;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  .menu-hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .menu-hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .header-left img {
-    width: 30px;
-    height: 30px;
-  }
-  .header-left .header-title {
-    font-weight: 600;
-    font-size: 1.4rem;
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  nav.desktop-menu {
-    display: flex;
-    gap: 25px;
-    font-weight: 600;
-    font-size: 1.1rem;
-  }
-  nav.desktop-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: 400;
-  }
-  nav.desktop-menu a.active {
-    font-weight: 700;
-    text-decoration: underline;
-  }
-
-  .search-container {
-    position: relative;
-  }
-  .search-icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    fill: white;
-    transition: transform 0.3s ease;
-  }
-  .search-input {
-    position: absolute;
-    top: 50%;
-    right: 30px;
-    transform: translateY(-50%);
-    width: 0;
-    opacity: 0;
-    padding: 5px 10px;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    transition: width 0.3s ease, opacity 0.3s ease;
-    background-color: white;
-    color: #333;
-    z-index: 1001;
-  }
-  .search-container.active .search-input {
-    width: 180px;
-    opacity: 1;
-  }
-
-  nav.mobile-menu {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100vw;
-    background: linear-gradient(90deg, #6a0dad, #008000);
-    display: none;
-    flex-direction: column;
-    padding: 10px 20px;
-    z-index: 999;
-  }
-  nav.mobile-menu a {
-    color: white;
-    padding: 10px 0;
-    text-decoration: none;
-    font-weight: 400;
-  }
-  nav.mobile-menu a.active {
-    font-weight: 700;
-    text-decoration: underline;
-  }
-
-  main {
-    padding: 100px 20px 40px;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  main h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-  }
-  main p {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    line-height: 1.5;
-  }
-
-  .btn-cv {
-    background-color: #6a0dad;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 30px;
-  }
-  .btn-cv:hover {
-    background-color: #5a0ca0;
-  }
-
-  /* Linea sotto bottone */
-  .separator {
-    border-top: 1px solid #ccc;
-    margin: 20px auto 30px;
-    width: 50%;
-  }
-
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-  }
-  .social-icons a {
-    color: #6a0dad;
-    font-size: 2rem;
-    text-decoration: none;
-  }
-
-  /* Sezione contatti con sfondo grigio */
-  .contacts-section {
-    background-color: #e0e0e0;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-radius: 8px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .contacts-section p {
-    margin: 5px 0;
-    font-weight: 600;
-    color: #333;
-  }
-
-  .contacts-section a {
-    color: #0a9396;
-    text-decoration: none;
-  }
-  .contacts-section a:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 768px) {
-    nav.desktop-menu {
-      display: none;
+  <style>
+    * {
+      box-sizing: border-box;
     }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background: linear-gradient(90deg, #6a0dad, #008000);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      height: 60px;
+      z-index: 1000;
+    }
+
+    /* Hamburger a sinistra */
     .menu-hamburger {
-      display: flex;
+      width: 30px;
+      height: 24px;
+      cursor: pointer;
+      display: none; /* solo mobile */
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: 15px;
     }
-    nav.mobile-menu.show {
-      display: flex;
+    .menu-hamburger span {
+      display: block;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
     }
-    .header-left {
-      /* Spostiamo logo e nome un po’ più a destra per lasciare spazio hamburger */
-      margin-left: 0;
+    .menu-hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
     }
-  }
-</style>
+    .menu-hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
 
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-left img {
+      width: 30px;
+      height: 30px;
+    }
+    .header-left .header-title {
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav.desktop-menu {
+      display: flex;
+      gap: 25px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    nav.desktop-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    nav.desktop-menu a.active {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .search-container {
+      position: relative;
+    }
+    .search-icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      fill: white;
+      transition: transform 0.3s ease;
+    }
+    .search-input {
+      position: absolute;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      width: 0;
+      opacity: 0;
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      transition: width 0.3s ease, opacity 0.3s ease;
+      background-color: white;
+      color: #333;
+      z-index: 1001;
+    }
+    .search-container.active .search-input {
+      width: 180px;
+      opacity: 1;
+    }
+
+    nav.mobile-menu {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100vw;
+      background: linear-gradient(90deg, #6a0dad, #008000);
+      display: none;
+      flex-direction: column;
+      padding: 10px 20px;
+      z-index: 999;
+    }
+    nav.mobile-menu a {
+      color: white;
+      padding: 10px 0;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    nav.mobile-menu a.active {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 100px 20px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    main h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .btn-cv {
+      background-color: #6a0dad;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    .btn-cv:hover {
+      background-color: #5a0ca0;
+    }
+
+    /* Linea sotto bottone */
+    .separator {
+      border-top: 1px solid #ccc;
+      margin: 20px auto 30px;
+      width: 50%;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .social-icons a {
+      color: #6a0dad;
+      font-size: 2rem;
+      text-decoration: none;
+    }
+
+    /* Sezione contatti con sfondo grigio */
+    .contacts-section {
+      background-color: #e0e0e0;
+      padding: 20px 0;
+      margin-top: 40px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contacts-section p {
+      margin: 5px 0;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .contacts-section a {
+      color: #0a9396;
+      text-decoration: none;
+    }
+    .contacts-section a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      nav.desktop-menu {
+        display: none;
+      }
+      .menu-hamburger {
+        display: flex;
+      }
+      nav.mobile-menu.show {
+        display: flex;
+      }
+      .header-left {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
-  <!-- Hamburger menu a sinistra, visibile solo su mobile -->
   <div class="menu-hamburger" id="menuHamburger" aria-label="Menu" tabindex="0">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- Logo e nome, a destra dell’hamburger -->
   <div class="header-left">
     <img src="images/MS.png" alt="Icona MS" />
     <div class="header-title">Maria Sabia</div>
   </div>
 
   <div class="header-right">
-    <!-- Menu desktop, visibile su schermi grandi -->
-    <nav class="desktop-menu" id="desktopMenu">
+    <nav class="desktop-menu" id="desktopMenu" role="navigation" aria-label="Menu principale">
       <a href="#home" class="active" id="linkHome">Home</a>
       <a href="#cv" id="linkCV">CV</a>
     </nav>
 
-    <!-- Icona e barra di ricerca -->
     <div class="search-container" id="searchContainer">
       <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" aria-label="Cerca" role="button" tabindex="0" xmlns="http://www.w3.org/2000/svg">
         <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.15 5.02 12.13 2 8.5 2S1.85 5.02 1.85 8.39c0 3.36 3.02 6.38 6.65 6.38 1.61 0 3.09-.59 4.21-1.58l.27.28v.79l4.25 4.25 1.5-1.5-4.25-4.25zM8.5 13c-2.5 0-4.5-2-4.5-4.5S6 4 8.5 4s4.5 2 4.5 4.5S11 13 8.5 13z"/>
@@ -277,12 +272,12 @@
     </div>
   </div>
 
-  <!-- Menu mobile (menu hamburger) con link Home e CV, visibile solo su mobile -->
   <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
     <a href="#home" class="active" id="mobileLinkHome">Home</a>
     <a href="#cv" id="mobileLinkCV">CV</a>
   </nav>
 </header>
+
 
 
 <main>
