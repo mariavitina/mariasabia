@@ -34,7 +34,28 @@
     z-index: 1000;
   }
 
-  /* Menu desktop */
+  /* Left side: icon + name */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-left img {
+    width: 30px;
+    height: 30px;
+  }
+  .header-left .header-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+
+  /* Desktop menu (Home, CV) and search container */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
   nav.desktop-menu {
     display: flex;
     gap: 25px;
@@ -51,12 +72,45 @@
     text-decoration: underline;
   }
 
-  /* Hamburger menu */
+  /* Search container */
+  .search-container {
+    position: relative;
+  }
+  .search-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    fill: white;
+    transition: transform 0.3s ease;
+  }
+  .search-input {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    width: 0;
+    opacity: 0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    background-color: white;
+    color: #333;
+    z-index: 1001;
+  }
+  .search-container.active .search-input {
+    width: 180px;
+    opacity: 1;
+  }
+
+  /* Hamburger menu (hidden desktop) */
   .menu-hamburger {
     width: 30px;
     height: 24px;
     cursor: pointer;
-    display: none; /* nascosto su desktop */
+    display: none; /* only on mobile */
     flex-direction: column;
     justify-content: space-between;
   }
@@ -87,6 +141,7 @@
     display: none;
     flex-direction: column;
     padding: 10px 20px;
+    z-index: 999;
   }
   nav.mobile-menu a {
     color: white;
@@ -99,7 +154,6 @@
     text-decoration: underline;
   }
 
-  /* Titolo centrale */
   main {
     padding: 100px 20px 40px;
     max-width: 800px;
@@ -117,7 +171,6 @@
     line-height: 1.5;
   }
 
-  /* Bottone CV viola */
   .btn-cv {
     background-color: #6a0dad;
     color: white;
@@ -134,20 +187,18 @@
     background-color: #5a0ca0;
   }
 
-  /* Icone social e contatti */
   .social-icons {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 30px;
   }
   .social-icons a {
     color: #6a0dad;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-decoration: none;
   }
 
-  /* Sezione contatti */
   .contacts {
     font-size: 1rem;
   }
@@ -170,6 +221,9 @@
     nav.mobile-menu.show {
       display: flex;
     }
+    .header-right {
+      gap: 10px;
+    }
   }
 </style>
 
@@ -177,22 +231,36 @@
 <body>
 
 <header>
-  <div class="menu-hamburger" id="menuHamburger" aria-label="Menu" tabindex="0">
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="header-left">
+    <img src="images/MS.png" alt="Icona MS" />
+    <div class="header-title">Maria Sabia</div>
   </div>
 
-  <nav class="desktop-menu" id="desktopMenu">
-    <a href="#home" class="active" id="linkHome">Home</a>
-    <a href="#cv" id="linkCV">CV</a>
-  </nav>
+  <div class="header-right">
+    <nav class="desktop-menu" id="desktopMenu">
+      <a href="#home" class="active" id="linkHome">Home</a>
+      <a href="#cv" id="linkCV">CV</a>
+    </nav>
+
+    <div class="search-container" id="searchContainer">
+      <svg class="search-icon" id="searchIcon" viewBox="0 0 24 24" aria-label="Cerca" role="button" tabindex="0" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.15 5.02 12.13 2 8.5 2S1.85 5.02 1.85 8.39c0 3.36 3.02 6.38 6.65 6.38 1.61 0 3.09-.59 4.21-1.58l.27.28v.79l4.25 4.25 1.5-1.5-4.25-4.25zM8.5 13c-2.5 0-4.5-2-4.5-4.5S6 4 8.5 4s4.5 2 4.5 4.5S11 13 8.5 13z"/>
+      </svg>
+
+      <input type="search" id="searchInput" class="search-input" placeholder="Cerca nel sito" aria-label="Cerca nel sito" />
+    </div>
+
+    <div class="menu-hamburger" id="menuHamburger" aria-label="Menu" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 
   <nav class="mobile-menu" id="mobileMenu">
     <a href="#home" class="active" id="mobileLinkHome">Home</a>
     <a href="#cv" id="mobileLinkCV">CV</a>
   </nav>
-
 </header>
 
 <main>
@@ -202,91 +270,24 @@
     <a href="files/CV_Maria_Sabia.pdf" download class="btn-cv">Scarica CV</a>
 
     <div class="social-icons">
-      <a href="https://github.com/mariasabia" target="_blank" aria-label="GitHub">&#x1F5C3;</a>
-      <a href="https://linkedin.com/in/mariasabia" target="_blank" aria-label="LinkedIn">&#128100;</a>
-    </div>
-
-    <div class="contacts">
-      <p>Email: <a href="mailto:mariavitinasabia98@gmail.com">mariavitinasabia98@gmail.com</a></p>
-    </div>
-  </section>
-
-  <section id="cv" style="display:none;">
-    <h2>Il mio CV</h2>
-    <p>Qui potresti inserire un'anteprima o link aggiuntivi al tuo CV.</p>
-  </section>
-</main>
-
-<script>
-  // Toggle hamburger menu
-  const menuHamburger = document.getElementById('menuHamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuHamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('show');
-    menuHamburger.classList.toggle('active');
-  });
-
-  // Link desktop e mobile
-  const linkHome = document.getElementById('linkHome');
-  const linkCV = document.getElementById('linkCV');
-  const mobileLinkHome = document.getElementById('mobileLinkHome');
-  const mobileLinkCV = document.getElementById('mobileLinkCV');
-
-  const sectionHome = document.getElementById('home');
-  const sectionCV = document.getElementById('cv');
-
-  function setActiveSection(section) {
-    if (section === 'home') {
-      sectionHome.style.display = 'block';
-      sectionCV.style.display = 'none';
-
-      linkHome.classList.add('active');
-      linkCV.classList.remove('active');
-      mobileLinkHome.classList.add('active');
-      mobileLinkCV.classList.remove('active');
-    } else if (section === 'cv') {
-      sectionHome.style.display = 'none';
-      sectionCV.style.display = 'block';
-
-      linkHome.classList.remove('active');
-      linkCV.classList.add('active');
-      mobileLinkHome.classList.remove('active');
-      mobileLinkCV.classList.add('active');
-    }
-
-    // Chiudi menu mobile se aperto
-    if(mobileMenu.classList.contains('show')){
-      mobileMenu.classList.remove('show');
-      menuHamburger.classList.remove('active');
-    }
-  }
-
-  // Eventi click link
-  linkHome.addEventListener('click', e => {
-    e.preventDefault();
-    setActiveSection('home');
-  });
-  linkCV.addEventListener('click', e => {
-    e.preventDefault();
-    setActiveSection('cv');
-  });
-  mobileLinkHome.addEventListener('click', e => {
-    e.preventDefault();
-    setActiveSection('home');
-  });
-  mobileLinkCV.addEventListener('click', e => {
-e.preventDefault();
-setActiveSection('cv');
-});
-
-// Per chi arriva su pagina con hash (es. #cv)
-window.addEventListener('load', () => {
-const hash = window.location.hash.substring(1);
-if(hash === 'cv'){
-setActiveSection('cv');
-} else {
-setActiveSection('home');
-}
-});
-</script>
-</body> </html> 
+      <!-- GitHub SVG -->
+      <a href="https://github.com/mariasabia" target="_blank" aria-label="GitHub" rel="noopener noreferrer">
+        <svg height="32" width="32" viewBox="0 0 16 16" fill="#6a0dad" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.54 5.47 7.59.4.07.55-.17.55-.38
+           0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.59 7.59 0 012-.27c.68.003 1.36.092
+2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+</a>
+<!-- LinkedIn SVG -->
+<a href="https://linkedin.com/in/mariasabia" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer">
+<svg height="32" width="32" viewBox="0 0 24 24" fill="#6a0dad" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5v-15H0v15zM7.5 9h4.8v2.1h.1c.7-1.3 2.4-2.7 4.9-2.7 5.2 0 6.2 3.4 6.2 7.8V24h-5v-6.5c0-1.6 0-3.6-2.2-3.6s-2.6 1.8-2.6 3.5V24h-5v-15z"/>
+</svg>
+</a>
+<div class="contacts">
+  <p>Email: <a href="mailto:maria.sabia@example.com">maria.sabia@example.com</a></p>
+</div>
+</section> <section id="cv" style="display:none;"> <h2>CV</h2> <p>Qui potrai inserire il contenuto del tuo CV o un link per scaricarlo.</p> </section> </main> <script> const menuHamburger = document.getElementById('menuHamburger'); const mobileMenu = document.getElementById('mobileMenu'); const desktopMenuLinks = document.querySelectorAll('nav.desktop-menu a'); const mobileMenuLinks = document.querySelectorAll('nav.mobile-menu a'); const searchContainer = document.getElementById('searchContainer'); const searchIcon = document.getElementById('searchIcon'); const searchInput = document.getElementById('searchInput'); // Hamburger toggle menuHamburger.addEventListener('click', () => { menuHamburger.classList.toggle('active'); mobileMenu.classList.toggle('show'); }); menuHamburger.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); menuHamburger.classList.toggle('active'); mobileMenu.classList.toggle('show'); } }); // Search toggle searchIcon.addEventListener('click', () => { searchContainer.classList.toggle('active'); if(searchContainer.classList.contains('active')) { searchInput.focus(); } else { searchInput.value = ''; } }); searchIcon.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); searchContainer.classList.toggle('active'); if(searchContainer.classList.contains('active')) { searchInput.focus(); } else { searchInput.value = ''; } } }); // Close search if click outside document.addEventListener('click', (e) => { if(!searchContainer.contains(e.target) && searchContainer.classList.contains('active')) { searchContainer.classList.remove('active'); searchInput.value = ''; } }); // Change section visibility and active menu link function setActiveSection(section) { const homeSection = document.getElementById('home'); const cvSection = document.getElementById('cv'); if(section === 'home') { homeSection.style.display = 'block'; cvSection.style.display = 'none'; } else { homeSection.style.display = 'none'; cvSection.style.display = 'block'; } desktopMenuLinks.forEach(link => { link.classList.toggle('active', link.id.toLowerCase().includes(section)); }); mobileMenuLinks.forEach(link => { link.classList.toggle('active', link.id.toLowerCase().includes(section)); }); // Close mobile menu after selection menuHamburger.classList.remove('active'); mobileMenu.classList.remove('show'); } desktopMenuLinks.forEach(link => { link.addEventListener('click', e => { e.preventDefault(); const target = e.target.getAttribute('href').substring(1); setActiveSection(target); }); }); mobileMenuLinks.forEach(link => { link.addEventListener('click', e => { e.preventDefault(); const target = e.target.getAttribute('href').substring(1); setActiveSection(target); }); }); // On page load, default to home or hash window.addEventListener('load', () => { const hash = window.location.hash.substring(1); if(hash === 'cv') { setActiveSection('cv'); } else { setActiveSection('home'); } }); </script> </body> </html> ```
