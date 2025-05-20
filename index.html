@@ -161,18 +161,19 @@
     #contatti a {
       color: #6a0dad;
     }
-
-     #contatti {
-    background-color: #f0f0f0; /* grigio chiaro su tutta la sezione */
-    padding: 3rem 1rem;
-    width: 100%;
+  #contatti {
+    background-color: #f0f0f0; /* sfondo grigio a tutta larghezza */
+    padding: 3rem 0;           /* padding verticale */
+    width: 100vw;              /* tutta la larghezza della finestra */
+    box-sizing: border-box;    /* per sicurezza */
   }
 
   #contatti .container {
-    max-width: 1200px;
-    margin-left: 0;       /* niente centratura */
-    padding-left: 20px;   /* distanziare dal bordo sinistro */
-    text-align: left;     /* allineare testo a sinistra */
+    max-width: 1200px;        /* contenuto limitato in larghezza */
+    padding-left: 20px;       /* distanza da sinistra */
+    padding-right: 20px;      /* distanza da destra */
+    margin: 0 auto;           /* centra orizzontalmente il contenuto */
+    text-align: left;         /* allinea testo a sinistra */
   }
 
   #contatti h2 {
@@ -450,16 +451,14 @@ nav.mobile-menu {
   </form>
 </section>
 
-    <!-- Contatti -->
-
- <section id="contatti">
+  <!-- Contatti -->
+  <section id="contatti">
   <div class="container">
     <h2>Contatti</h2>
     <p>Email: <a href="mailto:mariavitinasabia98@gmail.com">mariavitinasabia98@gmail.com</a></p>
     <p>Indirizzo: Bari, 70124</p>
   </div>
 </section>
-
 
       </form>
     </section>
