@@ -177,31 +177,36 @@
     }
 
     #home {
-    text-align: center;
-  }
+      text-align: center;
+      display: block; /* Aggiunto */
+    }
+
+    #cv {
+      display: none; /* Aggiunto */
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
 
 .home-content {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centra verticalmente */
-  align-items: center;     /* centra orizzontalmente */
-  min-height: 300px;       
-  text-align: center;      /* centra testo */
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  text-align: center;
 }
-
 
 .home-text {
   flex: 1 1 300px;
   text-align: center;
 }
 
-
-
     main {
       padding: 100px 20px 40px;
       max-width: 800px;
       margin: 0 auto;
-      text-align: center;
     }
     main h1 {
       font-size: 2.5rem;
@@ -250,7 +255,7 @@
     }
    
    .cv-title {
-    color: #6a0dad; /* Viola */
+    color: #6a0dad;
     font-size: 1.8rem;
     font-weight: 700;
     text-align: left;
@@ -265,7 +270,6 @@
     font-size: 1.1rem;
     line-height: 1.6;
 }
-
 
     /* Sezione contatti con sfondo grigio */
     .contacts-section {
@@ -297,7 +301,6 @@
     width: 100%;
   }
 }
-
 
     @media (max-width: 768px) {
       nav.desktop-menu {
@@ -346,170 +349,184 @@
   </div>
   <div class="search-results" id="searchResults"></div>
 
-
   <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
     <a href="#home" class="active" id="mobileLinkHome">Home</a>
     <a href="#cv" id="mobileLinkCV">CV</a>
   </nav>
 </header>
 
-
-
 <main>
-<section id="home">
-  <div class="home-content">
-    <div class="home-text">
-      <h1>Benvenuto!</h1>
-      <p>Sono Maria Sabia, questa è la mia homepage. Sono una neolaureata magistrale in informatica curriculum Cybersecurity presso l'Università degli studi di Perugia. Sono una sviluppatrice interessata agli ambiti della sicurezza informatica, programmazione e design delle interfacce.</p>
-      <a href="files/CV_Maria_Vitina_Sabia.pdf" download class="btn-cv">Scarica CV</a>
+  <section id="home">
+    <div class="home-content">
+      <div class="home-text">
+        <h1>Benvenuto!</h1>
+        <p>Sono Maria Sabia, questa è la mia homepage. Sono una neolaureata magistrale in informatica curriculum Cybersecurity presso l'Università degli studi di Perugia. Sono una sviluppatrice interessata agli ambiti della sicurezza informatica, programmazione e design delle interfacce.</p>
+        <a href="files/CV_Maria_Vitina_Sabia.pdf" download class="btn-cv">Scarica CV</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Icone Social -->
+    <!-- Icone Social -->
     <div class="social-icons" aria-label="Link social">
       <a href="https://github.com/mariavitina" target="_blank" aria-label="GitHub" rel="noopener noreferrer">
         <svg height="32" width="32" viewBox="0 0 16 16" fill="#6a0dad" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.59 7.59 0 012-.27c.68.003 1.36.092 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-</svg>
-</a>
-<a href="https://www.linkedin.com/in/maria-sabia-aa317228a/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer">
-<svg height="32" width="32" viewBox="0 0 24 24" fill="#6a0dad" xmlns="http://www.w3.org/2000/svg">
-<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5v-15H0v15zM7.5 9h4.8v2.1h.1c.7-1.3 2.4-2.7 4.9-2.7 5.2 0 6.2 3.4 6.2 7.8V24h-5v-6.5c0-1.6 0-3.6-2.2-3.6s-2.6 1.8-2.6 3.5V24h-5v-15z"/>
-</svg>
-</a>
-</div>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/maria-sabia-aa317228a/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer">
+        <svg height="32" width="32" viewBox="0 0 24 24" fill="#6a0dad" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5v-15H0v15zM7.5 9h4.8v2.1h.1c.7-1.3 2.4-2.7 4.9-2.7 5.2 0 6.2 3.4 6.2 7.8V24h-5v-6.5c0-1.6 0-3.6-2.2-3.6s-2.6 1.8-2.6 3.5V24h-5v-15z"/>
+        </svg>
+      </a>
+    </div>
 
-  <!-- Modulo di contatto -->
-<section class="contact-form-section" style="background-color: #fff; padding: 2rem 1rem;">
-  <h2 style="color: purple; font-size: 1.8rem; margin-bottom: 1rem;">Scrivimi un messaggio</h2>
-  <form action="mailto:mariavitinasabia98@gmail.com" method="POST" enctype="text/plain" style="max-width: 600px; margin: 0 auto;">
-    <label for="name">Nome:</label><br>
-    <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
+    <!-- Modulo di contatto -->
+    <section class="contact-form-section" style="background-color: #fff; padding: 2rem 1rem;">
+      <h2 style="color: purple; font-size: 1.8rem; margin-bottom: 1rem;">Scrivimi un messaggio</h2>
+      <form action="mailto:mariavitinasabia98@gmail.com" method="POST" enctype="text/plain" style="max-width: 600px; margin: 0 auto;">
+        <label for="name">Nome:</label><br>
+        <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
 
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
 
-    <label for="message">Messaggio:</label><br>
-    <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"></textarea><br>
+        <label for="message">Messaggio:</label><br>
+        <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"></textarea><br>
 
-    <button type="submit" style="background-color: purple; color: white; border: none; padding: 10px 20px; font-size: 1rem; cursor: pointer;">Invia</button>
-  </form>
-</section>
+        <button type="submit" style="background-color: purple; color: white; border: none; padding: 10px 20px; font-size: 1rem; cursor: pointer;">Invia</button>
+      </form>
+    </section>
 
+    <!-- Contatti -->
+    <section id="contatti" style="background-color: #f0f0f0; padding: 3rem 1rem; width: 100%;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="color: purple; font-size: 2.2rem; margin-bottom: 1.5rem;">Contatti</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+          Email: <a href="mailto:mariavitinasabia98@gmail.com" style="color: inherit; text-decoration: underline;">mariavitinasabia98@gmail.com</a>
+        </p>
+        <p style="font-size: 1.2rem;">Indirizzo: Bari, 70124</p>
+      </div>
+    </section>
+  </section>
 
-  <!-- Contatti -->
-<section id="contatti" style="background-color: #f0f0f0; padding: 3rem 1rem; width: 100%;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <h2 style="color: purple; font-size: 2.2rem; margin-bottom: 1.5rem;">Contatti</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">
-      Email: <a href="mailto:mariavitinasabia98@gmail.com" style="color: inherit; text-decoration: underline;">mariavitinasabia98@gmail.com</a>
-    </p>
-    <p style="font-size: 1.2rem;">Indirizzo: Bari, 70124</p>
-  </div>
-</section>
-
-<!-- Sezione CV --> 
-<section id="cv" style="text-align: left; max-width: 800px; margin: 0 auto;">
-  <h2 style="color: purple; font-size: 2rem;">Formazione</h2>
-  <ul style="color: #000; font-size: 1.1rem; line-height: 1.6;">
-     <li>Laurea Magistrale in Informatica - Cybersecurity - Università degli Studi di Perugia</li>
-     <li>Laurea Triennale in Informatica - Università degli studi della Basilicata</li>
-     <li>Diploma di Maturità - Liceo Sceintifico Galileo Galilei Potenza</li>
+  <!-- Sezione CV --> 
+  <section id="cv">
+    <h2 style="color: purple; font-size: 2rem;">Formazione</h2>
+    <ul style="color: #000; font-size: 1.1rem; line-height: 1.6;">
+      <li>Laurea Magistrale in Informatica - Cybersecurity - Università degli Studi di Perugia</li>
+      <li>Laurea Triennale in Informatica - Università degli studi della Basilicata</li>
+      <li>Diploma di Maturità - Liceo Sceintifico Galileo Galilei Potenza</li>
     </ul>
-</section>
-  
+  </section>
+</main>
+
 <script>
 const menuHamburger = document.getElementById('menuHamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const searchContainer = document.getElementById('searchContainer');
-  const searchIcon = document.getElementById('searchIcon');
-  const searchInput = document.getElementById('searchInput');
-  const searchResults = document.getElementById('searchResults');
+const mobileMenu = document.getElementById('mobileMenu');
+const searchContainer = document.getElementById('searchContainer');
+const searchIcon = document.getElementById('searchIcon');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
 
-  // Sezioni
-  const homeSection = document.getElementById('home');
-  const cvSection = document.getElementById('cv');
+// Sezioni
+const homeSection = document.getElementById('home');
+const cvSection = document.getElementById('cv');
 
-  // Link Desktop
-  const linkHome = document.getElementById('linkHome');
-  const linkCV = document.getElementById('linkCV');
+// Link Desktop
+const linkHome = document.getElementById('linkHome');
+const linkCV = document.getElementById('linkCV');
 
-  // Link Mobile
-  const mobileLinkHome = document.getElementById('mobileLinkHome');
-  const mobileLinkCV = document.getElementById('mobileLinkCV');
+// Link Mobile
+const mobileLinkHome = document.getElementById('mobileLinkHome');
+const mobileLinkCV = document.getElementById('mobileLinkCV');
 
-  // Menu toggle
-  menuHamburger.addEventListener('click', () => {
+// Menu toggle
+menuHamburger.addEventListener('click', () => {
+  menuHamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('show');
+});
+
+menuHamburger.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
     menuHamburger.classList.toggle('active');
     mobileMenu.classList.toggle('show');
-  });
+  }
+});
 
-  menuHamburger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      menuHamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('show');
-    }
-  });
+// Search toggle
+searchIcon.addEventListener('click', () => {
+  searchContainer.classList.toggle('active');
+  searchInput.focus();
+});
 
-  // Search toggle
-  searchIcon.addEventListener('click', () => {
-    searchContainer.classList.toggle('active');
-    searchInput.focus();
-  });
-
-  // Navigazione sezioni
+// Navigazione sezioni
 function showSection(section) {
-    // Nascondi tutte le sezioni
-    document.querySelectorAll('main > section').forEach(sec => {
-        sec.style.display = 'none';
-    });
+  if (section === 'home') {
+    homeSection.style.display = 'block';
+    cvSection.style.display = 'none';
     
-    // Mostra solo la sezione selezionata
-    if (section === 'home') {
-        homeSection.style.display = 'block';
-    } else if (section === 'cv') {
-        cvSection.style.display = 'block';
-    }
+    // Scroll to top
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  } else if (section === 'cv') {
+    homeSection.style.display = 'none';
+    cvSection.style.display = 'block';
     
-    // Aggiorna classi attive menu desktop
-    linkHome.classList.toggle('active', section === 'home');
-    linkCV.classList.toggle('active', section === 'cv');
+    // Scroll to CV section
+    setTimeout(() => {
+      cvSection.scrollIntoView({behavior: 'smooth'});
+    }, 50);
+  }
+  
+  // Aggiorna classi attive menu desktop
+  linkHome.classList.toggle('active', section === 'home');
+  linkCV.classList.toggle('active', section === 'cv');
 
-    // Aggiorna classi attive menu mobile
-    mobileLinkHome.classList.toggle('active', section === 'home');
-    mobileLinkCV.classList.toggle('active', section === 'cv');
+  // Aggiorna classi attive menu mobile
+  mobileLinkHome.classList.toggle('active', section === 'home');
+  mobileLinkCV.classList.toggle('active', section === 'cv');
 
-    // Chiudi menu mobile se aperto
-    mobileMenu.classList.remove('show');
-    menuHamburger.classList.remove('active');
+  // Chiudi menu mobile se aperto
+  mobileMenu.classList.remove('show');
+  menuHamburger.classList.remove('active');
 }
 
-  linkHome.addEventListener('click', (e) => {
-    e.preventDefault();
-    showSection('home');
-  });
-
-  linkCV.addEventListener('click', (e) => {
-    e.preventDefault();
-    showSection('cv');
-  });
-
-  mobileLinkHome.addEventListener('click', (e) => {
-    e.preventDefault();
-    showSection('home');
-  });
-
-  mobileLinkCV.addEventListener('click', (e) => {
-    e.preventDefault();
-    showSection('cv');
-  });
-
-  // Mostra sezione iniziale
+linkHome.addEventListener('click', (e) => {
+  e.preventDefault();
   showSection('home');
+});
+
+linkCV.addEventListener('click', (e) => {
+  e.preventDefault();
+  showSection('cv');
+});
+
+mobileLinkHome.addEventListener('click', (e) => {
+  e.preventDefault();
+  showSection('home');
+});
+
+mobileLinkCV.addEventListener('click', (e) => {
+  e.preventDefault();
+  showSection('cv');
+});
+
+// Gestione hash URL
+window.addEventListener('load', () => {
+  if (window.location.hash === '#cv') {
+    showSection('cv');
+  } else {
+    showSection('home');
+  }
+});
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#cv') {
+    showSection('cv');
+  } else if (window.location.hash === '#home' || window.location.hash === '') {
+    showSection('home');
+  }
+});
 </script>
-  
-</main>
 </body>
 </html>
   
