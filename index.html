@@ -459,10 +459,19 @@ const menuHamburger = document.getElementById('menuHamburger');
   });
 
   // Navigazione sezioni
-  function showSection(section) {
-    homeSection.style.display = section === 'home' ? 'block' : 'none';
-    cvSection.style.display = section === 'cv' ? 'block' : 'none';
-
+function showSection(section) {
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('main > section').forEach(sec => {
+        sec.style.display = 'none';
+    });
+    
+    // Mostra solo la sezione selezionata
+    if (section === 'home') {
+        homeSection.style.display = 'block';
+    } else if (section === 'cv') {
+        cvSection.style.display = 'block';
+    }
+    
     // Aggiorna classi attive menu desktop
     linkHome.classList.toggle('active', section === 'home');
     linkCV.classList.toggle('active', section === 'cv');
@@ -474,7 +483,7 @@ const menuHamburger = document.getElementById('menuHamburger');
     // Chiudi menu mobile se aperto
     mobileMenu.classList.remove('show');
     menuHamburger.classList.remove('active');
-  }
+}
 
   linkHome.addEventListener('click', (e) => {
     e.preventDefault();
@@ -499,6 +508,8 @@ const menuHamburger = document.getElementById('menuHamburger');
   // Mostra sezione iniziale
   showSection('home');
 </script>
+  
+</main>
 </body>
 </html>
   
