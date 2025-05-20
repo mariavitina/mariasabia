@@ -418,18 +418,27 @@
     </ul>
 </section>
   
-  <script>
+<script>
   const menuHamburger = document.getElementById('menuHamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const searchContainer = document.getElementById('searchContainer');
   const searchIcon = document.getElementById('searchIcon');
   const searchInput = document.getElementById('searchInput');
   const searchResults = document.getElementById('searchResults');
-  const pages = [
-    { name: 'Home', href: '#home' },
-    { name: 'CV', href: '#cv' }
-  ];
 
+  // Sezioni
+  const homeSection = document.getElementById('home');
+  const cvSection = document.getElementById('cv');
+
+  // Link Desktop
+  const linkHome = document.getElementById('linkHome');
+  const linkCV = document.getElementById('linkCV');
+
+  // Link Mobile
+  const mobileLinkHome = document.getElementById('mobileLinkHome');
+  const mobileLinkCV = document.getElementById('mobileLinkCV');
+
+  // Menu toggle
   menuHamburger.addEventListener('click', () => {
     menuHamburger.classList.toggle('active');
     mobileMenu.classList.toggle('show');
@@ -443,12 +452,14 @@
     }
   });
 
+  // Search toggle
   searchIcon.addEventListener('click', () => {
     searchContainer.classList.toggle('active');
     if (searchContainer.classList.contains('active')) {
       searchInput.focus();
     } else {
       searchInput.value = '';
+      searchResults.style.display = 'none';
     }
   });
 
@@ -460,224 +471,57 @@
         searchInput.focus();
       } else {
         searchInput.value = '';
+        searchResults.style.display = 'none';
       }
     }
   });
 
-  searchInput.addEventListener('input', function () {
-  const query = this.value.toLowerCase();
-  searchResults.innerHTML = ''; // Pulisce i risultati precedenti
+  // Funzione per mostrare solo la sezione selezionata
+  function showSection(sectionToShow) {
+    homeSection.style.display = 'none';
+    cvSection.style.display = 'none';
 
-  if (!query) {
-    searchResults.style.display = 'none';
-    return;
-  }
+    sectionToShow.style.display = 'block';
 
-  const filteredPages = pages.filter(page =>
-    page.name.toLowerCase().includes(query)
-  );
-
-  if (filteredPages.length === 0) {
-    searchResults.innerHTML = '<div style="padding: 8px; color: #666;">Nessun risultato</div>';
-  } else {
-    filteredPages.forEach(page => {
-      const link = document.createElement('a');
-      link.href = page.href;
-      link.textContent = page.name;
-      link.addEventListener('click', () => {
-        searchContainer.classList.remove('active');
-        searchInput.value = '';
-        searchResults.style.display = 'none';
-      });
-      searchResults.appendChild(link);
-    });
-  }
-
-  searchResults.style.display = 'flex';
-});
-
-
-  document.addEventListener('click', (e) => {
-    if (!searchContainer.contains(e.target) && searchContainer.classList.contains('active')) {
-      searchContainer.classList.remove('active');
-      searchInput.value = '';
-    }
-  });
-
-  const desktopMenuLinks = document.querySelectorAll('nav.desktop-menu a');
-  const mobileMenuLinks = document.querySelectorAll('nav.mobile-menu a');
-  const homeSection = document.getElementById('home');
-  const cvSection = document.getElementById('cv');
-  const linkCV = document.getElementById('linkCV');
-  const mobileLinkCV = document.getElementById('mobileLinkCV');
-  const sectionCV = document.getElementById('cv');
-  const linkHome = document.getElementById('linkHome');
-  const mobileLinkHome = document.getElementById('mobileLinkHome');
-  const sectionHome = document.getElementById('home');
-
-  function setActiveSection(section) {
-    if (section === 'home') {
-      homeSection.style.display = 'block';
-      cvSection.style.display = 'none';
-    } else {
-      homeSection.style.display = 'none';
-      cvSection.style.display = 'block';
-    }
-    desktopMenuLinks.forEach(link => {
-      link.classList.toggle('active', link.id.toLowerCase().includes(section));
-    });
-    mobileMenuLinks.forEach(link => {
-      link.classList.toggle('active', link.id.toLowerCase().includes(section));
-    });
+    // Chiude il menu mobile se aperto
+    mobileMenu.classList.remove('show');
     menuHamburger.classList.remove('active');
-    mobileMenu.classList.remove('show');
   }
 
-  desktopMenuLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = e.target.getAttribute('href').substring(1);
-      setActiveSection(target);
-    });
-  });
-
-  mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = e.target.getAttribute('href').substring(1);
-      setActiveSection(target);
-    });
-  });
-
-  window.addEventListener('load', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash === 'cv') {
-      setActiveSection('cv');
-    } else {
-      setActiveSection('home');
-    }
-  });
-
-    function showCVSection() {
-    // Nasconde tutto tranne CV
-    document.getElementById('home').style.display = 'none';
-    sectionCV.style.display = 'block';
-  }
-
-  linkCV.addEventListener('click', function(event) {
-    event.preventDefault();
-    showCVSection();
-  });
-
-  mobileLinkCV.addEventListener('click', function(event) {
-    event.preventDefault();
-    mobileMenu.classList.remove('show');
-    showCVSection();
-  });
-    function showHomeSection() {
-  sectionCV.style.display = 'none';
-  sectionHome.style.display = 'block';
-}
-
-linkHome.addEventListener('click', function(event) {
-  event.preventDefault();
-  showHomeSection();
-});
-
-mobileLinkHome.addEventListener('click', function(event) {
-  event.preventDefault();
-  mobileMenu.classList.remove('show');
-  showHomeSection();
-});
-
-    // Gestione del cambio sezione (Home / CV)
-const linkHome = document.getElementById('linkHome');
-const linkCV = document.getElementById('linkCV');
-const mobileLinkHome = document.getElementById('mobileLinkHome');
-const mobileLinkCV = document.getElementById('mobileLinkCV');
-const sectionHome = document.getElementById('home');
-const sectionCV = document.getElementById('cv');
-
-function showSection(section) {
-  sectionHome.style.display = (section === 'home') ? 'block' : 'none';
-  sectionCV.style.display = (section === 'cv') ? 'block' : 'none';
-
-  // Evidenziazione attiva
-  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  if (section === 'home') {
+  // Collegamenti Desktop
+  linkHome.addEventListener('click', (e) => {
+    e.preventDefault();
+    showSection(homeSection);
     linkHome.classList.add('active');
-    mobileLinkHome.classList.add('active');
-  } else {
+    linkCV.classList.remove('active');
+  });
+
+  linkCV.addEventListener('click', (e) => {
+    e.preventDefault();
+    showSection(cvSection);
     linkCV.classList.add('active');
-    mobileLinkCV.classList.add('active');
-  }
-
-  // Chiudi menu mobile dopo il click
-  mobileMenu.classList.remove('show');
-  menuHamburger.classList.remove('active');
-}
-
-linkHome.addEventListener('click', (e) => {
-  e.preventDefault();
-  showSection('home');
-});
-
-linkCV.addEventListener('click', (e) => {
-  e.preventDefault();
-  showSection('cv');
-});
-
-mobileLinkHome.addEventListener('click', (e) => {
-  e.preventDefault();
-  showSection('home');
-});
-
-mobileLinkCV.addEventListener('click', (e) => {
-  e.preventDefault();
-  showSection('cv');
-});
-
-// Mostra home all'avvio
-showSection('home');
-
-  function mostraSezione(idSezione) {
-    const sezioni = ['home', 'cv'];
-    sezioni.forEach(sezione => {
-      const el = document.getElementById(sezione);
-      if (el) el.style.display = (sezione === idSezione) ? 'block' : 'none';
-    });
-
-    // Gestione classi "active" nei link
-    document.querySelectorAll('nav a').forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + idSezione);
-    });
-  }
-
-  // Event listener per i link
-  document.getElementById('linkHome').addEventListener('click', function (e) {
-    e.preventDefault();
-    mostraSezione('home');
+    linkHome.classList.remove('active');
   });
 
-  document.getElementById('linkCV').addEventListener('click', function (e) {
+  // Collegamenti Mobile
+  mobileLinkHome.addEventListener('click', (e) => {
     e.preventDefault();
-    mostraSezione('cv');
+    showSection(homeSection);
+    linkHome.classList.add('active');
+    linkCV.classList.remove('active');
   });
 
-  document.getElementById('mobileLinkHome').addEventListener('click', function (e) {
+  mobileLinkCV.addEventListener('click', (e) => {
     e.preventDefault();
-    mostraSezione('home');
-    mobileMenu.classList.remove('show'); // chiude il menu mobile
-    menuHamburger.classList.remove('active');
+    showSection(cvSection);
+    linkCV.classList.add('active');
+    linkHome.classList.remove('active');
   });
 
-  document.getElementById('mobileLinkCV').addEventListener('click', function (e) {
-    e.preventDefault();
-    mostraSezione('cv');
-    mobileMenu.classList.remove('show');
-    menuHamburger.classList.remove('active');
+  // Visualizza solo la home all'avvio
+  window.addEventListener('DOMContentLoaded', () => {
+    showSection(homeSection);
   });
-
 </script>
 </body>
 </html>
