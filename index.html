@@ -290,6 +290,14 @@
     .contacts-section a:hover {
       text-decoration: underline;
     }
+    @media (max-width: 480px) {
+  .search-results {
+    right: auto;
+    left: 0;
+    width: 100%;
+  }
+}
+
 
     @media (max-width: 768px) {
       nav.desktop-menu {
@@ -458,29 +466,38 @@
     }
   });
 
-    searchInput.addEventListener('input', function () {
+  searchInput.addEventListener('input', function () {
   const query = this.value.toLowerCase();
-  searchResults.innerHTML = '';
+  searchResults.innerHTML = ''; // Pulisce i risultati precedenti
 
-  if (query.trim() === '') {
+  if (!query) {
     searchResults.style.display = 'none';
     return;
   }
 
-  const matches = pages.filter(page => page.name.toLowerCase().includes(query));
+  const filteredPages = pages.filter(page =>
+    page.name.toLowerCase().includes(query)
+  );
 
-  if (matches.length > 0) {
-    matches.forEach(match => {
+  if (filteredPages.length === 0) {
+    searchResults.innerHTML = '<div style="padding: 8px; color: #666;">Nessun risultato</div>';
+  } else {
+    filteredPages.forEach(page => {
       const link = document.createElement('a');
-      link.href = match.href;
-      link.textContent = match.name;
+      link.href = page.href;
+      link.textContent = page.name;
+      link.addEventListener('click', () => {
+        searchContainer.classList.remove('active');
+        searchInput.value = '';
+        searchResults.style.display = 'none';
+      });
       searchResults.appendChild(link);
     });
-    searchResults.style.display = 'flex';
-  } else {
-    searchResults.style.display = 'none';
   }
+
+  searchResults.style.display = 'flex';
 });
+
 
   document.addEventListener('click', (e) => {
     if (!searchContainer.contains(e.target) && searchContainer.classList.contains('active')) {
