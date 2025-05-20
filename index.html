@@ -281,6 +281,10 @@ nav.mobile-menu {
     line-height: 1.6;
 }
 
+    .purple-title {
+      color: #6a0dad;
+    }
+
     /* Sezione contatti con sfondo grigio */
     .contacts-section {
       background-color: #e0e0e0;
@@ -304,7 +308,17 @@ nav.mobile-menu {
     .contacts-section a:hover {
       text-decoration: underline;
     }
-    @media (max-width: 480px) {
+
+ /* Link mail blu */
+.email-link {
+  color: #0a5396; /* un blu distinto */
+  text-decoration: underline;
+}
+.email-link:hover {
+  text-decoration: none;
+}
+
+ @media (max-width: 480px) {
   .search-results {
     right: auto;
     left: 0;
@@ -390,19 +404,22 @@ nav.mobile-menu {
     </div>
 
     <!-- Modulo di contatto -->
-    <section class="contact-form-section" style="background-color: #fff; padding: 2rem 1rem;">
-      <h2 style="color: purple; font-size: 1.8rem; margin-bottom: 1rem;">Scrivimi un messaggio</h2>
-      <form action="mailto:mariavitinasabia98@gmail.com" method="POST" enctype="text/plain" style="max-width: 600px; margin: 0 auto;">
-        <label for="name">Nome:</label><br>
-        <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
+  <section class="contact-form-section" style="background-color: #fff; padding: 2rem 1rem;">
+  <h2 class="purple-title">Scrivimi un messaggio</h2>
+  <form action="mailto:mariavitinasabia98@gmail.com" method="POST" enctype="text/plain" style="max-width: 600px; margin: 0 auto;">
+    <label for="name">Nome:</label><br>
+    <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
 
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"><br>
 
-        <label for="message">Messaggio:</label><br>
-        <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"></textarea><br>
+    <label for="message">Messaggio:</label><br>
+    <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 1rem;"></textarea><br>
 
-       <button type="submit" class="btn-cv">Invia</button>
+    <button type="submit" class="btn-cv">Invia</button>
+  </form>
+</section>
+
 
       </form>
     </section>
