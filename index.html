@@ -510,6 +510,12 @@
   const mobileMenuLinks = document.querySelectorAll('nav.mobile-menu a');
   const homeSection = document.getElementById('home');
   const cvSection = document.getElementById('cv');
+  const linkCV = document.getElementById('linkCV');
+  const mobileLinkCV = document.getElementById('mobileLinkCV');
+  const sectionCV = document.getElementById('cv');
+  const linkHome = document.getElementById('linkHome');
+  const mobileLinkHome = document.getElementById('mobileLinkHome');
+  const sectionHome = document.getElementById('home');
 
   function setActiveSection(section) {
     if (section === 'home') {
@@ -553,6 +559,38 @@
       setActiveSection('home');
     }
   });
+
+    function showCVSection() {
+    // Nasconde tutto tranne CV
+    document.getElementById('home').style.display = 'none';
+    sectionCV.style.display = 'block';
+  }
+
+  linkCV.addEventListener('click', function(event) {
+    event.preventDefault();
+    showCVSection();
+  });
+
+  mobileLinkCV.addEventListener('click', function(event) {
+    event.preventDefault();
+    mobileMenu.classList.remove('show');
+    showCVSection();
+  });
+    function showHomeSection() {
+  sectionCV.style.display = 'none';
+  sectionHome.style.display = 'block';
+}
+
+linkHome.addEventListener('click', function(event) {
+  event.preventDefault();
+  showHomeSection();
+});
+
+mobileLinkHome.addEventListener('click', function(event) {
+  event.preventDefault();
+  mobileMenu.classList.remove('show');
+  showHomeSection();
+});
 </script>
 </body>
 </html>
