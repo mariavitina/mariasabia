@@ -162,19 +162,28 @@
       color: #6a0dad;
     }
 
-  #contatti {
+
+    #contatti {
+  position: relative;
+  padding: 3rem 0;
+}
+
+#contatti::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
   background-color: #f0f0f0;
-  width: 100%;              /* Cambiato da 100vw a 100% */
-  padding: 3rem 20px;       /* Aggiunto padding orizzontale */
-  box-sizing: border-box;   /* Assicura che il padding sia incluso nella larghezza */
-  margin-left: calc(-1 * (100vw - 100%) / 2); /* Correzione per scrollbar */
-  margin-right: calc(-1 * (100vw - 100%) / 2);
+  z-index: -1;
 }
 
 #contatti .content {
-  max-width: 800px;         /* Stessa larghezza del main */
-  margin: 0 auto;           /* Centrato */
-  padding: 0;               /* Reset padding */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
   #contatti h2 {
