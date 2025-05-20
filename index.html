@@ -162,18 +162,20 @@
       color: #6a0dad;
     }
 
-      #contatti {
-    background-color: #f0f0f0; /* sfondo grigio */
-    width: 100vw;              /* tutta larghezza viewport */
-    padding: 3rem 0;           /* padding verticale */
-    box-sizing: border-box;
-  }
+  #contatti {
+  background-color: #f0f0f0;
+  width: 100%;              /* Cambiato da 100vw a 100% */
+  padding: 3rem 20px;       /* Aggiunto padding orizzontale */
+  box-sizing: border-box;   /* Assicura che il padding sia incluso nella larghezza */
+  margin-left: calc(-1 * (100vw - 100%) / 2); /* Correzione per scrollbar */
+  margin-right: calc(-1 * (100vw - 100%) / 2);
+}
 
-  #contatti .content {
-    margin-left: 0;            /* nessun margine a sinistra */
-    padding-left: 0;           /* nessun padding a sinistra */
-    text-align: left;
-  }
+#contatti .content {
+  max-width: 800px;         /* Stessa larghezza del main */
+  margin: 0 auto;           /* Centrato */
+  padding: 0;               /* Reset padding */
+}
 
   #contatti h2 {
     color: #6a0dad;
@@ -452,11 +454,9 @@ nav.mobile-menu {
 
   <!-- Contatti -->
  <section id="contatti">
-  <div class="content">
-    <h2>Contatti</h2>
-    <p>Email: <a href="mailto:mariavitinasabia98@gmail.com">mariavitinasabia98@gmail.com</a></p>
-    <p>Indirizzo: Bari, 70124</p>
-  </div>
+  <h2>Contatti</h2>
+  <p>Email: <a href="mailto:mariavitinasabia98@gmail.com">mariavitinasabia98@gmail.com</a></p>
+  <p>Indirizzo: Bari, 70124</p>
 </section>
     
       </form>
