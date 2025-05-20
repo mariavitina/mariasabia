@@ -640,6 +640,44 @@ mobileLinkCV.addEventListener('click', (e) => {
 // Mostra home all'avvio
 showSection('home');
 
+  function mostraSezione(idSezione) {
+    const sezioni = ['home', 'cv'];
+    sezioni.forEach(sezione => {
+      const el = document.getElementById(sezione);
+      if (el) el.style.display = (sezione === idSezione) ? 'block' : 'none';
+    });
+
+    // Gestione classi "active" nei link
+    document.querySelectorAll('nav a').forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + idSezione);
+    });
+  }
+
+  // Event listener per i link
+  document.getElementById('linkHome').addEventListener('click', function (e) {
+    e.preventDefault();
+    mostraSezione('home');
+  });
+
+  document.getElementById('linkCV').addEventListener('click', function (e) {
+    e.preventDefault();
+    mostraSezione('cv');
+  });
+
+  document.getElementById('mobileLinkHome').addEventListener('click', function (e) {
+    e.preventDefault();
+    mostraSezione('home');
+    mobileMenu.classList.remove('show'); // chiude il menu mobile
+    menuHamburger.classList.remove('active');
+  });
+
+  document.getElementById('mobileLinkCV').addEventListener('click', function (e) {
+    e.preventDefault();
+    mostraSezione('cv');
+    mobileMenu.classList.remove('show');
+    menuHamburger.classList.remove('active');
+  });
+
 </script>
 </body>
 </html>
