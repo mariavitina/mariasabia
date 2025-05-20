@@ -419,7 +419,7 @@
 </section>
   
 <script>
-  const menuHamburger = document.getElementById('menuHamburger');
+const menuHamburger = document.getElementById('menuHamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const searchContainer = document.getElementById('searchContainer');
   const searchIcon = document.getElementById('searchIcon');
@@ -455,73 +455,49 @@
   // Search toggle
   searchIcon.addEventListener('click', () => {
     searchContainer.classList.toggle('active');
-    if (searchContainer.classList.contains('active')) {
-      searchInput.focus();
-    } else {
-      searchInput.value = '';
-      searchResults.style.display = 'none';
-    }
+    searchInput.focus();
   });
 
-  searchIcon.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      searchContainer.classList.toggle('active');
-      if (searchContainer.classList.contains('active')) {
-        searchInput.focus();
-      } else {
-        searchInput.value = '';
-        searchResults.style.display = 'none';
-      }
-    }
-  });
+  // Navigazione sezioni
+  function showSection(section) {
+    homeSection.style.display = section === 'home' ? 'block' : 'none';
+    cvSection.style.display = section === 'cv' ? 'block' : 'none';
 
-  // Funzione per mostrare solo la sezione selezionata
-  function showSection(sectionToShow) {
-    homeSection.style.display = 'none';
-    cvSection.style.display = 'none';
+    // Aggiorna classi attive menu desktop
+    linkHome.classList.toggle('active', section === 'home');
+    linkCV.classList.toggle('active', section === 'cv');
 
-    sectionToShow.style.display = 'block';
+    // Aggiorna classi attive menu mobile
+    mobileLinkHome.classList.toggle('active', section === 'home');
+    mobileLinkCV.classList.toggle('active', section === 'cv');
 
-    // Chiude il menu mobile se aperto
+    // Chiudi menu mobile se aperto
     mobileMenu.classList.remove('show');
     menuHamburger.classList.remove('active');
   }
 
-  // Collegamenti Desktop
   linkHome.addEventListener('click', (e) => {
     e.preventDefault();
-    showSection(homeSection);
-    linkHome.classList.add('active');
-    linkCV.classList.remove('active');
+    showSection('home');
   });
 
   linkCV.addEventListener('click', (e) => {
     e.preventDefault();
-    showSection(cvSection);
-    linkCV.classList.add('active');
-    linkHome.classList.remove('active');
+    showSection('cv');
   });
 
-  // Collegamenti Mobile
   mobileLinkHome.addEventListener('click', (e) => {
     e.preventDefault();
-    showSection(homeSection);
-    linkHome.classList.add('active');
-    linkCV.classList.remove('active');
+    showSection('home');
   });
 
   mobileLinkCV.addEventListener('click', (e) => {
     e.preventDefault();
-    showSection(cvSection);
-    linkCV.classList.add('active');
-    linkHome.classList.remove('active');
+    showSection('cv');
   });
 
-  // Visualizza solo la home all'avvio
-  window.addEventListener('DOMContentLoaded', () => {
-    showSection(homeSection);
-  });
+  // Mostra sezione iniziale
+  showSection('home');
 </script>
 </body>
 </html>
